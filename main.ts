@@ -28,13 +28,12 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// Inicio del servidor con contexto
 const { url } = await startStandaloneServer(server, {
-  // deno-lint-ignore require-await
   context: async () => ({
-    VehiclesCollection,
+    VehicleCollection: VehiclesCollection, // Cambiar el nombre aquí
     PartsCollection,
   }),
 });
+
 
 console.info(`🚀 Server ready at ${url}`);
